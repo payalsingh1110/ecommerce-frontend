@@ -1,0 +1,36 @@
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    color: #3f51b5;
+  }
+
+//   form{
+//     display: flex;
+//     flex-direction: column;
+
+    
+//   }
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+}
