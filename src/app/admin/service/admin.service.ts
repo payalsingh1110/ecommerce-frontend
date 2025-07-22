@@ -15,6 +15,18 @@ constructor(private http: HttpClient) { }
 
   addCategory(categoryDto:any) : Observable<any>{
       return this.http.post(BASIC_URL + 'api/admin/category', categoryDto, {
+        headers : this.createAuthorization(),
+      })
+  }
+
+  getAllCategories() : Observable<any>{
+      return this.http.get(BASIC_URL + 'api/admin', {
+        headers : this.createAuthorization(),
+      })
+  }
+
+  addProduct(productDto:any) : Observable<any>{
+      return this.http.post(BASIC_URL + 'api/admin/product', productDto, {
         headers : this.createAuthorization()
       })
   }
