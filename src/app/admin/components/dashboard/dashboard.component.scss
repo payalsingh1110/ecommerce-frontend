@@ -24,7 +24,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
   padding: 20px;
   min-height: 70vh;
   background-color: #f8f8f8;
@@ -60,34 +59,40 @@
     }
 
     .product-details {
-      padding: 10px;
+      padding: 20px;
 
       .product-name {
         font-size: 20px;
         font-weight: bold;
         color: #108ee9;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
       }
 
       .product-description {
         font-size: 0.95rem;
         color: #666;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
 
       mat-divider {
         margin: 10px 0;
       }
 
-      .product-info {
-        .info-row {
+  .product-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; // spacing between price and category
+        margin-bottom: 10px;
+
+        .info-pair {
           display: flex;
-          justify-content: space-between;
-          margin-bottom: 6px;
+          gap: 5px;
 
           .info-label {
-            color: #555;
             font-weight: bold;
+            color: #555;
           }
 
           .info-value {
@@ -95,17 +100,42 @@
             color: #222;
           }
         }
-      }
+  }
 
-      .action {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 10px;
 
-        .update-button {
-            margin-right: 10px;
-        }
-      }
+  .actions {
+  display: flex;
+  justify-content: center; // centers the button group
+  gap: 10px; // spacing between buttons
+  margin-top: 15px;
+
+  .update-button {
+    background-color: #1976d2; // primary blue
+    color: white;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: #1565c0;
+    }
+  }
+
+  .delete-button {
+    background-color: #e53935; // red for delete
+    color: white;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: #c62828;
+    }
+  }
+}
+
     }
   }
 }
