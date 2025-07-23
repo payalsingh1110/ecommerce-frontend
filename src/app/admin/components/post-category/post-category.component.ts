@@ -32,7 +32,7 @@ export class PostCategoryComponent implements OnInit {
     //  call your API here
     }
 
-     addCategory(): void {
+    addCategory(): void {
        console.log('Category Added:', this.categoryForm.value);
           // send data to backend using service
         if(this.categoryForm.valid){

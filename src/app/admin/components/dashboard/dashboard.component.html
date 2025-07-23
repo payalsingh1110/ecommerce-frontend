@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<div class="product-list">
+    <mat-card class="product-card"  *ngFor = "let product of products">
+        <div class="product-image">
+            <img [src]="product.processedImg" all="product-image">
+        </div>
+        <div class="product-details">
+            <h2 class="product-name">{{ product.name}}</h2>
+            <p class="product-description">{{ product.description}}</p>
+
+            <mat-divider></mat-divider>
+            <div class="product-info">
+                <div class="info-row">
+                <span class="info-label">Price:</span>
+                <span class="info-value">${{ product.price }}</span>
+                </div>
+                <div class="info-row">
+                <span class="info-label">Category:</span>
+                <span class="info-value">${{ product.categoryName }}</span>
+                </div>                
+            </div>
+              
+
+
+        </div>
+    </mat-card>
+
+</div>
