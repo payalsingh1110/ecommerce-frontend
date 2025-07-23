@@ -24,6 +24,17 @@ export class CustomerService {
         })
     }
 
+    addToCart(productId: any) : Observable<any>{
+
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId(),
+      }
+        return this.http.post(BASIC_URL + `api/customer/cart`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
     private createAuthorizationHeader(): HttpHeaders{
      const token = UserStorageService.getToken();  //Should NOT be a static method unless your service is purely static
     //  console.log("Sending token:", token);         good for debug

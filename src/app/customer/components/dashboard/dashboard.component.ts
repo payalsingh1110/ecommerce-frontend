@@ -51,6 +51,9 @@ export class DashboardComponent {
   }
 
   addToCart(id: any){
+    this.customerService.addToCart(id).subscribe(res=>{
+      this.snackBar.open('Product added to cart successfully', 'Close', {duration : 5000})
+    })
     
   }
 
