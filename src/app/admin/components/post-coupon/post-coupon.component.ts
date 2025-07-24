@@ -31,8 +31,19 @@ export class PostCouponComponent {
 
     addCoupon(){
       if(this.couponForm.valid){
+        console.log(this.couponForm.value);
+          const couponData = { ...this.couponForm.value };
+
+             // Convert expirationDate to yyyy-MM-dd
+            if (couponData.expirationDate) {
+               couponData.expirationDate = this.formatDate(couponData.expirationDate);
+            }
+
+     console.log('Coupon Data to Send:', couponData);
+
         this.adminService.addCoupon(this.couponForm.value).subscribe(res=>{
           if(res.id!=null){
+            console.log("Saved Coupon", res);
             this.snackbar.open('Coupon Posted Successfully', 'Close', {duration: 5000});
             this.router.navigateByUrl('admin/dashboard');
           }else{
@@ -43,5 +54,12 @@ export class PostCouponComponent {
         this.couponForm.markAllAsTouched();
       }
     }
+
+  formatDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+  }
 
 }

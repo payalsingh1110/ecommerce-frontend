@@ -55,7 +55,7 @@ constructor(private http: HttpClient) { }
       })
   }
 
-  getCoupon() : Observable<any>{
+  getCoupons() : Observable<any>{
       return this.http.get(BASIC_URL + 'api/admin/coupons', {
         headers : this.createAuthorizationHeader()
       })
