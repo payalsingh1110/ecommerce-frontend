@@ -50,11 +50,42 @@ export class DashboardComponent {
 
   }
 
-  addToCart(id: any){
-    this.customerService.addToCart(id).subscribe(res=>{
-      this.snackBar.open('Product added to cart successfully', 'Close', {duration : 5000})
-    })
+  // addToCart(id: any){
+  //   this.customerService.addToCart(id).subscribe(res=>{
+  //     this.snackBar.open('Product added to cart successfully', 'Close', {duration : 5000})
+  //   })
     
+  // }
+
+                          // error handling 
+  addToCart(id: any) {
+  this.customerService.addToCart(id).subscribe({
+    next: (res) => {
+      this.snackBar.open(' Product added to cart successfully', 'Close', {
+        duration: 5000
+      });
+    },
+    error: (err) => {
+
+      console.error(err);  // good for debugging
+      if (err.status === 409) {
+        this.snackBar.open(' Product already in cart', 'Close', {
+          duration: 5000
+        });
+      }else if (err.status === 401) {
+        this.snackBar.open(' Please login first', 'Close', {
+          duration: 5000
+        });
+      }else {
+        this.snackBar.open(' Failed to add product to cart', 'Close', {
+          duration: 5000
+        });
+        
+      }
+    }
+
+    });
   }
+
 
 }
