@@ -44,7 +44,7 @@ constructor(private http: HttpClient) { }
   }
 
   deleteProduct(productId:any) : Observable<any>{
-      return this.http.post(BASIC_URL + `api/admin/product/${productId}`, {
+      return this.http.delete(BASIC_URL + `api/admin/product/${productId}`, {
         headers : this.createAuthorizationHeader(),
       })
   }

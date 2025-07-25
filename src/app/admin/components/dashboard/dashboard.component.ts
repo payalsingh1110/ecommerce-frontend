@@ -31,7 +31,7 @@ export class DashboardComponent {
     this.products= [];
     this.adminService.getAllProducts().subscribe(res=>{
       res.forEach(element =>{
-        element.processImg = 'data:image/jpeg;base64,' + element.byteImg;
+        element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.products.push(element);
       });
     })
@@ -42,7 +42,7 @@ export class DashboardComponent {
     const title = this.searchProductForm.get('title')!.value;
     this.adminService.getAllProductsByName(title).subscribe(res=>{
       res.forEach(element =>{
-        element.processImg = 'data:image/jpeg;base64,' + element.byteImg;
+        element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.products.push(element);
       });
     })
@@ -50,12 +50,12 @@ export class DashboardComponent {
   }
 
   deleteProduct(productId:any){
-    this.adminService.deleteProduct(productId).subscribe(res=>{
-      if(res.body == null){
+    this.adminService.deleteProduct(productId).subscribe((res:any)=>{
+      if(!res || res.body == null){
         this.snackBar.open('Product Deleted Successfully!', 'Close', {duration: 5000});
         this.getAllProducts();
       }else{
-        this.snackBar.open(res.message, 'Close', {duration: 5000, panelClass: 'error-snackbar'});
+        this.snackBar.open(res.message || 'Something went wrong!', 'Close', {duration: 5000, panelClass: 'error-snackbar'});
       }
     })
   }
