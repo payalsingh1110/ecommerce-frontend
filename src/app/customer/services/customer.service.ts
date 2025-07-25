@@ -44,8 +44,8 @@ export class CustomerService {
     }
 
     private createAuthorizationHeader(): HttpHeaders{
-     const token = UserStorageService.getToken();  //Should NOT be a static method unless your service is purely static
-    //  console.log("Sending token:", token);         good for debug
+     const token = UserStorageService.getToken();  
+    //  console.log("Sending token:", token);                                  good for debug
     return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer
    
   }
