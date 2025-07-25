@@ -37,8 +37,17 @@ export class CustomerService {
 
     
     getCartByUserId() : Observable<any>{
+      console.log("UserId:", UserStorageService.getUserId());
+
       const userId = UserStorageService.getUserId()      
       return this.http.get(BASIC_URL + `api/customer/cart/${userId}`, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+    applyCoupon(code:any) : Observable<any>{
+      const userId = UserStorageService.getUserId()      
+      return this.http.get(BASIC_URL + `api/customer/cart/${userId}/${code}`, {
           headers : this.createAuthorizationHeader(),
         })
     }
