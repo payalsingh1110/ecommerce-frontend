@@ -28,7 +28,7 @@ export class CustomerService {
 
       const cartDto ={
         productId : productId,
-        userId: UserStorageService.getUserId(),
+        userId: UserStorageService.getUserId()
       }
         return this.http.post(BASIC_URL + `api/customer/cart`, cartDto, {
           headers : this.createAuthorizationHeader(),

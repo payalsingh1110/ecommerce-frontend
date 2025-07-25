@@ -50,8 +50,8 @@ export class DashboardComponent {
   }
 
   deleteProduct(productId:any){
-    this.adminService.deleteProduct(productId).subscribe(res=>{
-      if(res.body == null){
+    this.adminService.deleteProduct(productId).subscribe((res: any)=>{
+      if(!res || res.body == null){
         this.snackBar.open('Product Deleted Successfully!', 'Close', {duration: 5000});
         this.getAllProducts();
       }else{
