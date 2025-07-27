@@ -15,8 +15,12 @@ export class CartComponent {
   cartItems : any []=[];
   order: any;
 
-   couponForm!: FormGroup;
+  couponForm!: FormGroup;
 
+
+    // === NEW ===
+ // loading: boolean = true;  // Loader state
+ // skeletonItems = Array(3).fill(0); // Placeholder skeletons
  
 
 
@@ -42,15 +46,36 @@ export class CartComponent {
     })
   }
 
+  
   getCart(){
-    this.cartItems = [];
-    this.customerService.getCartByUserId().subscribe(res =>{
-      this.order = res;
-      res.cartItems.forEach(element => {
+
+    //  this.loading = true; // Start loader
+
+      this.customerService.getCartByUserId().subscribe(res =>{
+        console.log(res);
+       this.order = res;
+    this.cartItems=  res.cartItems.map(element => {
         element.processedImg = "data:image/jpeg;base64,"+ element.returnedImg;
-        this.cartItems.push(element);
-      });
-    })
+        return element;
+       // this.cartItems.push(element);
+         });
+           console.log(res);
+        //    this.cartItems= res.cartItems;
+          
+      //  this.loading = false; // Stop loader
+      },err => {
+        console.error(err);
+      //  this.loading = false;
+      }
+       
+    );
+    console.log("CartItems: " , this.cartItems.length); 
+ 
+      
   }
+  //  // === NEW ===
+  // trackByItemId(index: number, item: any): number {
+  //   return item.id;
+  // }
 
 }

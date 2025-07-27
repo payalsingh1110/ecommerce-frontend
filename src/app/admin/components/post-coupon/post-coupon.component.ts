@@ -31,19 +31,9 @@ export class PostCouponComponent {
 
     addCoupon(){
       if(this.couponForm.valid){
-        console.log(this.couponForm.value);
-          const couponData = { ...this.couponForm.value };
-
-             // Convert expirationDate to yyyy-MM-dd
-            if (couponData.expirationDate) {
-               couponData.expirationDate = this.formatDate(couponData.expirationDate);
-            }
-
-     console.log('Coupon Data to Send:', couponData);
-
         this.adminService.addCoupon(this.couponForm.value).subscribe(res=>{
           if(res.id!=null){
-            console.log("Saved Coupon", res);
+          //  console.log("Saved Coupon", res);
             this.snackbar.open('Coupon Posted Successfully', 'Close', {duration: 5000});
             this.router.navigateByUrl('admin/dashboard');
           }else{
