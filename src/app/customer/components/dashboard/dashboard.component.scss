@@ -1,8 +1,8 @@
 .search-container {
   display: flex;
-  justify-content: center;  
-  align-items: center;     
-  margin: 20px auto;         
+  justify-content: center;  /* Center horizontally */
+  align-items: center;       /* Center vertically if needed */
+  margin: 20px auto;         /* Gap from top */
   width: 100%;
 }
 
@@ -102,12 +102,12 @@
 
       .actions {
       display: flex;
-      justify-content: center; 
-      gap: 10px; 
+      justify-content: center; // centers the button group
+      gap: 10px; // spacing between buttons
       margin-top: 15px;
 
   .update-button {
-    background-color: #1976d2; 
+    background-color: #1976d2; // primary blue
     color: white;
     font-weight: 500;
     padding: 6px 12px;
@@ -120,7 +120,8 @@
   }
 
   .delete-button {
-    background-color: #e53935;
+    background-color: #e53935; // red for delete
+    color: white;
     font-weight: 500;
     padding: 6px 12px;
     border-radius: 4px;

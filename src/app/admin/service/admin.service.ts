@@ -49,10 +49,20 @@ constructor(private http: HttpClient) { }
       })
   }
 
+  addCoupon(couponDto:any) : Observable<any>{
+      return this.http.post(BASIC_URL + 'api/admin/coupons', couponDto, {
+        headers : this.createAuthorizationHeader()
+      })
+  }
+
+  getCoupons() : Observable<any>{
+      return this.http.get(BASIC_URL + 'api/admin/coupons', {
+        headers : this.createAuthorizationHeader()
+      })
+  }
+
   private createAuthorizationHeader(): HttpHeaders{
-     const token = UserStorageService.getToken();  //Should NOT be a static method unless your service is purely static
-    //  console.log("Sending token:", token);         good for debug
-    return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer
-   
+     const token = UserStorageService.getToken(); //Should NOT be a static method unless your service is purely static
+      return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer   
   }
 }

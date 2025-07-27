@@ -1,0 +1,61 @@
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  mat-card-content {
+    padding: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    th {
+      background-color: #3f51b5;
+      color: #fff;
+      padding: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .bold-cell {
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f7f7f7;
+    }
+
+    tr:hover {
+      background-color: #e8eaf6;
+      transition: background 0.2s ease-in-out;
+    }
+  }
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    table {
+      font-size: 12px;
+      th,
+      td {
+        padding: 8px;
+      }
+    }
+  }
+}

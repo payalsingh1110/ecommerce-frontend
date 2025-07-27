@@ -24,9 +24,71 @@ export class CustomerService {
         })
     }
 
+    addToCart(productId: any) : Observable<any>{
+
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId()
+      }
+        return this.http.post(BASIC_URL + `api/customer/cart`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+    increaseProductQuantity(productId: any) : Observable<any>{
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId()
+      }
+        return this.http.post(BASIC_URL + `api/customer/addition`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+    decreaseProductQuantity(productId: any) : Observable<any>{
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId()
+      }
+        return this.http.post(BASIC_URL + `api/customer/deduction`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+
+removeFromCart(productId: any): Observable<any> {
+  const cartDto = {
+    productId: productId,
+    userId: UserStorageService.getUserId()
+  };
+  return this.http.request('delete', BASIC_URL + `api/customer/cart/remove`, {
+    body: cartDto,
+    headers: this.createAuthorizationHeader(),
+  });
+}
+
+
+
+    
+    getCartByUserId() : Observable<any>{
+      console.log("UserId:", UserStorageService.getUserId());
+
+      const userId = UserStorageService.getUserId()      
+      return this.http.get(BASIC_URL + `api/customer/cart/${userId}`, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+    applyCoupon(code:any) : Observable<any>{
+      const userId = UserStorageService.getUserId()      
+      return this.http.get(BASIC_URL + `api/customer/coupon/${userId}/${code}`, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
     private createAuthorizationHeader(): HttpHeaders{
-     const token = UserStorageService.getToken();  //Should NOT be a static method unless your service is purely static
-    //  console.log("Sending token:", token);         good for debug
+     const token = UserStorageService.getToken();  
+    //  console.log("Sending token:", token);                                  good for debug
     return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer
    
   }
