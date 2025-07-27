@@ -1,67 +1,70 @@
-<!-- Skeleton Loader -->
-<!-- <div *ngIf="loading; else cartContent">
-  <div *ngFor="let s of skeletonItems" class="skeleton-item">
-    <div class="skeleton-img"></div>
-    <div class="skeleton-text"></div>
-  </div>
-</div> -->
+<div *ngIf="cartItems?.length > 0; else emptyCart">
+  <div class="cart-container">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <div class="product-info">
+        <div class="product-img">
+          <img [src]="item.processedImg" loading="lazy" alt="product-img"/>
+        </div>
+        <div class="product-detail">
+          <div class="item-row">
+            <div class="item-name" [ngClass]="{ 'highlight': item.highlighted }">
+              {{ item.productName }}
+            </div>
 
-<!-- Actual Cart Content -->
-<ng-template #cartContent>
-  <div *ngIf="cartItems?.length > 0; else emptyCart">
-    <div class="cart-container">
-      <div class="cart-item" *ngFor="let item of cartItems">
-        <div class="product-info">
-          <div class="product-img">
-            <img [src]="item.processedImg" loading="lazy" alt="product-img"/>
-          </div>
-          <div class="product-detail">
-            <div class="item-row">
-              <div class="item-name" [ngClass]="{ 'highlight': item.highlighted}">
-                {{item.productName}}
-              </div>
-              <div class="item-price">{{ item.price | currency}}</div>
-              <div class="quantity-controls">
-                <button mat-icon-button [disabled]="item.quantity == 1">
-                  <mat-icon>remove_circle_outline</mat-icon>
-                </button>
-                <span class="quantity">{{ item.quantity}}</span>
-                <button mat-icon-button>
-                  <mat-icon>add_circle_outline</mat-icon>
-                </button>
-              </div>
+            <!-- Price * Quantity -->
+            <div class="item-price">
+              {{ (item.price * item.quantity) | currency }}
+            </div>
+
+            <!-- Quantity & Delete Controls -->
+            <div class="quantity-controls">
+              <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
+                <mat-icon>remove_circle_outline</mat-icon>
+              </button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button mat-icon-button (click)="increaseQuantity(item.productId)">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+
+              <!-- Delete Button -->
+              <button mat-icon-button color="warn" (click)="removeItem(item.productId)">
+                <mat-icon>delete</mat-icon>
+              </button>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="total-price">
-        Total Amount : {{ order.totalAmount | currency}}
-      </div>
-      <div class="total-price">
-        Amount : {{ order.amount | currency}}
-      </div>
-      <div>
-        <button mat-raised-button color="primary">Place Order</button>
-      </div>
     </div>
 
-    <!-- Coupon Form -->
-    <div class="container" *ngIf="order.couponName == null">
-      <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()" class="coupon-form">
-        <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Code</mat-label>
-          <input matInput type="text" placeholder="Code" formControlName="code"/>
-          <mat-error *ngIf="couponForm.get('code')?.hasError('required')">
-            This input is required!
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Apply Coupon</button>
-      </form>
+    <!-- Total -->
+    <div class="total-price">
+      Total Amount : {{ order.totalAmount | currency }}
+    </div>
+    <div class="total-price">
+      Amount : {{ order.amount | currency }}
+    </div>
+    <div class="total-price" *ngIf="order.couponName">
+      Coupon Applied : {{ order.couponName }}
+    </div>
+    <div>
+      <button mat-raised-button color="primary">Place Order</button>
     </div>
   </div>
-</ng-template>
+
+  <!-- Coupon Form -->
+  <div class="container" *ngIf="order.couponName == null">
+    <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()" class="coupon-form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Code</mat-label>
+        <input matInput type="text" placeholder="Code" formControlName="code"/>
+        <mat-error *ngIf="couponForm.get('code')?.hasError('required')">
+          This input is required!
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Apply Coupon</button>
+    </form>
+  </div>
+</div>
 
 <ng-template #emptyCart>
   <div class="empty-cart">

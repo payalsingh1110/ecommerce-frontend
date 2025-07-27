@@ -18,9 +18,7 @@ export class CartComponent {
   couponForm!: FormGroup;
 
 
-    // === NEW ===
- // loading: boolean = true;  // Loader state
- // skeletonItems = Array(3).fill(0); // Placeholder skeletons
+ 
  
 
 
@@ -47,35 +45,51 @@ export class CartComponent {
   }
 
   
-  getCart(){
+  getCart(){   
+    
 
-    //  this.loading = true; // Start loader
 
       this.customerService.getCartByUserId().subscribe(res =>{
-        console.log(res);
+        console.log("Cart Response:", res);
        this.order = res;
-    this.cartItems=  res.cartItems.map(element => {
+       this.cartItems=  res.cartItems.map(element => {
         element.processedImg = "data:image/jpeg;base64,"+ element.returnedImg;
         return element;
-       // this.cartItems.push(element);
-         });
-           console.log(res);
-        //    this.cartItems= res.cartItems;
-          
-      //  this.loading = false; // Stop loader
-      },err => {
+       });
+       console.log(res);
+   
+       },err => {
         console.error(err);
-      //  this.loading = false;
-      }
-       
-    );
-    console.log("CartItems: " , this.cartItems.length); 
- 
-      
+       }       
+      );      
   }
-  //  // === NEW ===
-  // trackByItemId(index: number, item: any): number {
-  //   return item.id;
-  // }
+
+  increaseQuantity(productId: any){
+    this.customerService.increaseProductQuantity(productId).subscribe(res=>{
+      this.snackBar.open("Product quantity increased", 'Close',{duration:5000});
+      this.getCart();
+    })
+  }
+
+  decreaseQuantity(productId: any){
+    this.customerService.decreaseProductQuantity(productId).subscribe(res=>{
+      this.snackBar.open("Product quantity decreased", 'Close',{duration:5000});
+      this.getCart();
+    })
+  }
+
+  removeItem(productId: number) {
+  this.customerService.removeFromCart(productId).subscribe({
+    next: (res: any) => {
+      this.snackBar.open('Item removed from cart', 'Close', { duration: 3000 });
+      this.getCart(); // Refresh cart
+    },
+    error: (err) => {
+      this.snackBar.open('Failed to remove item', 'Close', { duration: 3000 });
+    }
+  });
+}
+
+ 
 
 }

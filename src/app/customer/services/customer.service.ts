@@ -35,6 +35,40 @@ export class CustomerService {
         })
     }
 
+    increaseProductQuantity(productId: any) : Observable<any>{
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId()
+      }
+        return this.http.post(BASIC_URL + `api/customer/addition`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+    decreaseProductQuantity(productId: any) : Observable<any>{
+      const cartDto ={
+        productId : productId,
+        userId: UserStorageService.getUserId()
+      }
+        return this.http.post(BASIC_URL + `api/customer/deduction`, cartDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
+
+removeFromCart(productId: any): Observable<any> {
+  const cartDto = {
+    productId: productId,
+    userId: UserStorageService.getUserId()
+  };
+  return this.http.request('delete', BASIC_URL + `api/customer/cart/remove`, {
+    body: cartDto,
+    headers: this.createAuthorizationHeader(),
+  });
+}
+
+
+
     
     getCartByUserId() : Observable<any>{
       console.log("UserId:", UserStorageService.getUserId());
