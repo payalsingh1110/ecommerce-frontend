@@ -61,6 +61,18 @@ constructor(private http: HttpClient) { }
       })
   }
 
+
+  getPlaceOrders() : Observable<any>{
+      return this.http.get(BASIC_URL + 'api/admin/placeOrders', {
+        headers : this.createAuthorizationHeader()
+      })
+  }
+
+  changeOrderStatus(orderId: number, status: String) : Observable<any>{
+      return this.http.get(BASIC_URL + `api/admin/order/${orderId}/${status}`, {
+        headers : this.createAuthorizationHeader()
+      })
+  }
   private createAuthorizationHeader(): HttpHeaders{
      const token = UserStorageService.getToken(); //Should NOT be a static method unless your service is purely static
       return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer   
