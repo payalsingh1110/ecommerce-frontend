@@ -3,6 +3,7 @@ import { CustomerService } from '../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 @Component({
   selector: 'app-cart',
@@ -36,7 +37,9 @@ export class CartComponent {
   }
 
   applyCoupon():void{
+    
     this.customerService.applyCoupon(this.couponForm.get(['code'])!.value).subscribe(res=>{
+     
       this.snackBar.open("Coupon Applied Successfully", 'Close',{duration:5000});
       this.getCart();
     },error=>{
@@ -45,8 +48,7 @@ export class CartComponent {
   }
 
   
-  getCart(){   
-    
+  getCart(){      
 
 
       this.customerService.getCartByUserId().subscribe(res =>{
@@ -56,7 +58,6 @@ export class CartComponent {
         element.processedImg = "data:image/jpeg;base64,"+ element.returnedImg;
         return element;
        });
-       console.log(res);
    
        },err => {
         console.error(err);
@@ -78,7 +79,7 @@ export class CartComponent {
     })
   }
 
-  removeItem(productId: number) {
+removeItem(productId: number) {
   this.customerService.removeFromCart(productId).subscribe({
     next: (res: any) => {
       this.snackBar.open('Item removed from cart', 'Close', { duration: 3000 });
@@ -87,8 +88,12 @@ export class CartComponent {
     error: (err) => {
       this.snackBar.open('Failed to remove item', 'Close', { duration: 3000 });
     }
-  });
-}
+   });
+  }
+
+  placeOrder(){
+    this.dialog.open(PlaceOrderComponent);
+  }
 
  
 
