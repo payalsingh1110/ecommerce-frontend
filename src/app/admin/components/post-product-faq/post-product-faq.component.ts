@@ -23,7 +23,7 @@ export class PostProductFaqComponent {
   ){ }
 
   ngOnInit(){
-    this.productId = +this.activatedRoute.snapshot.params['productId'];
+    this.productId = this.activatedRoute.snapshot.params['productId'];
     this.FAQForm = this.fb.group({
       question:['',Validators.required],
       answer:['',Validators.required],
