@@ -109,6 +109,13 @@ removeFromCart(productId: any): Observable<any> {
         });
      }
 
+    giveReview(reviewDto:any) : Observable<any>{              
+      return this.http.post(BASIC_URL + `api/customer/review`, reviewDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+     }
+
+
     private createAuthorizationHeader(): HttpHeaders{
      const token = UserStorageService.getToken();  
     //  console.log("Sending token:", token);                                  good for debug

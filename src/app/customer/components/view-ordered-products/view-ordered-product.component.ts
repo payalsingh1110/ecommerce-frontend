@@ -35,6 +35,7 @@ export class ViewOrderedProductComponent {
           this.orderedProductDetailsList.push(element);
       });
       this.totalAmount = res.orderAmount;
+      console.log(res);
     })
   }
 
