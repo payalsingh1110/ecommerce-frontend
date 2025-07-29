@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  padding: 24px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+mat-table {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+mat-header-cell {
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #e3f2fd;
+  color: #003973;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+mat-cell {
+  font-size: 15px;
+  padding: 12px;
+  color: #424242;
+  border-bottom: 1px solid #eee;
+}
+
+mat-row:hover {
+  background-color: #f1f8ff;
+}
+
+button {
+  padding: 6px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+mat-cell span button {
+  margin-top: 4px;
+}
+
+/* Status-specific colors */
+mat-cell span.delivered {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+mat-cell span.placed {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+mat-cell span.cancelled {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  mat-header-cell,
+  mat-cell {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+}

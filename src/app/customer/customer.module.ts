@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { ViewOrderedProductComponent } from './components/view-ordered-products/view-ordered-product.component';
+import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     DashboardComponent,
     CartComponent,
     PlaceOrderComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    ViewOrderedProductComponent,
+    ReviewOrderedProductComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule
-    
-]
+
+  ]
 })
 export class CustomerModule { }
