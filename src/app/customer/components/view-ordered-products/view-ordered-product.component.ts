@@ -39,56 +39,6 @@ export class ViewOrderedProductComponent {
     })
   }
 
-  // getOrderedProductDetailsbyOrderId() {
-  //   console.log("call inside this");
-  //   this.customerService.getOrderedProducts(this.orderId).subscribe(res => {
-  //   console.log(' FULL API RESPONSE:', res);  //  Add this line!
-
-  //   if (res) {
-  //     this.totalAmount = res.orderAmount;
-
-  //     if (res.productDtoList && res.productDtoList.length > 0) {
-  //       this.orderedProductDetailsList = res.productDtoList.map(product => ({
-  //         ...product,
-//           processedImg: 'data:image/jpeg;base64,' + product.byteImg
-//         }));
-//       } else {
-//         console.warn(' productDtoList is empty or missing.');
-//       }
-//     } else {
-//       console.error(' API response is null or undefined!');
-//     }
-//   });
-// }
-
-// 
-
-//   this.customerService.getOrderedProducts(this.orderId).subscribe({
-//     next: res => {
-//       console.log(' FULL API RESPONSE:', res);
-//       console.log('Dto length', res.productDtoList.length );
-
-//       if (res) {
-//         this.totalAmount = res.orderAmount;
-
-//         if (res.productDtoList && res.productDtoList.length > 0) {
-//           this.orderedProductDetailsList = res.productDtoList.map(product => ({
-//             ...product,
-//             processedImg: 'data:image/jpeg;base64,' + product.byteImg
-//           }));
-//         } else {
-//           console.warn(' productDtoList is empty or missing.');
-//         }
-//       } else {
-//         console.error(' API response is null or undefined!');
-//       }
-//     },
-//     error: err => {
-//       console.error(' Error while fetching ordered products:', err);
-//     }
-//   });
-// }
-
 }
 
 
