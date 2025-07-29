@@ -101,10 +101,7 @@ removeFromCart(productId: any): Observable<any> {
     }
 
      getOrderedProducts(orderId:number) : Observable<any>{  
-      const token = UserStorageService.getToken();
-      console.log(" Sending token:", token);
-        
-      return this.http.get(BASIC_URL + `api/customer/ordered-products/${orderId}`, {
+          return this.http.get(BASIC_URL + `api/customer/ordered-products/${orderId}`, {
           headers : this.createAuthorizationHeader(),
         });
      }
@@ -113,6 +110,13 @@ removeFromCart(productId: any): Observable<any> {
       return this.http.post(BASIC_URL + `api/customer/review`, reviewDto, {
           headers : this.createAuthorizationHeader(),
         })
+     }
+
+     
+     getProductDetailById(productId:number) : Observable<any>{  
+          return this.http.get(BASIC_URL + `api/customer/product/${productId}`, {
+          headers : this.createAuthorizationHeader(),
+        });
      }
 
 
