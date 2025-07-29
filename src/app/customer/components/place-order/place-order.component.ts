@@ -26,7 +26,7 @@ export class PlaceOrderComponent {
   ngOnInit(){
     this.orderForm = this.fb.group({
       address:['',Validators.required],
-      orderDescritpion: [''],
+      orderDescription: [''],
     })
   }
 
