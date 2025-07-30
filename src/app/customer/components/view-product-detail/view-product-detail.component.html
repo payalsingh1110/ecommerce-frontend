@@ -6,8 +6,18 @@
         <div class="product-details">
             <h2>{{product.name}}</h2>
             <p class="description" >{{product.description}}</p>
-            <p class="price" >{{product.price}}</p>
-            <p class="category" >{{product.categoryName}}</p>
+            <p class="price" >Price: ${{product.price}}</p>
+            <p class="category" >Category: {{product.categoryName}}>
+                <mat-icon class="heart-icon" (click)="addToWishlist()" 
+                style ="cursor:pointer; margin-top: 10px;">favorite_border</mat-icon>
+                    <!-- <mat-icon class="heart-icon"
+                        [ngStyle]="{ color: isInWishlist(product.id) ? 'deeppink' : 'gray' }"
+                        (click)="!isInWishlist(product.id) && addToWishlist()"
+                        style="cursor: pointer; margin-top: 10px;">
+                        {{ isInWishlist(product.id) ? 'favorite' : 'favorite_border' }}
+                    </mat-icon>             -->
+
+            </p>
         </div>
     </div>
 </div>
