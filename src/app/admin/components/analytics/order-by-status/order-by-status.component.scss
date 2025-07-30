@@ -1,0 +1,58 @@
+.order-status-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.order-status-card {
+  width: 250px;
+  min-height: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  mat-card-header {
+    background-color: #e0e0e0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .status-avatar {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  mat-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .status-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4caf50;
+  }
+}

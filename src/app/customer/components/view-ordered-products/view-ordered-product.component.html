@@ -7,7 +7,7 @@
       <div class="product-detail">
         <div class="item-row">
           <div class="item-name">{{ product.name }}</div>
-          <div class="item-price">Price:${{ product.price }}</div>
+          <div class="item-price">Price:{{ product.price  | currency:'INR':'symbol-narrow'  }}</div>
           <div class="item-quantity">Quantity: {{ product.quantity }}</div>
         </div>
       </div>
@@ -18,6 +18,6 @@
   </div>
 
   <div class="total-price">
-    Total: {{ totalAmount | currency }}
+    Total: {{ totalAmount  | currency:'INR':'symbol-narrow'  }}
   </div>
 </div>

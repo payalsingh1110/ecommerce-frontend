@@ -6,7 +6,7 @@
         <div class="product-detail">
             <h2>{{ product.productName}}</h2>
             <p class="description">{{ product.productDescription}}</p>
-            <p class="price">${{ product.price}}</p>
+            <p class="price">${{ product.price  | currency:'INR':'symbol-narrow' }}</p>
             
         </div>
     </div>

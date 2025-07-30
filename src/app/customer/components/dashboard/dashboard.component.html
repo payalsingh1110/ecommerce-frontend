@@ -26,7 +26,7 @@
             <div class="product-info">
                 <div class="info-pair">
                 <span class="info-label">Price:</span>
-                <span class="info-value">${{ product.price }}</span>
+                <span class="info-value">{{ product.price  | currency:'INR':'symbol-narrow'  }}</span>
                 </div>
                 <div class="info-pair">
                 <span class="info-label">Category:</span>

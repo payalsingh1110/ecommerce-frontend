@@ -13,7 +13,7 @@
 
             <!-- Price * Quantity -->
             <div class="item-price">
-              {{ (item.price ) | currency }}
+              {{ (item.price )  | currency:'INR':'symbol-narrow'  }}
             </div>
 
             <!-- Quantity & Delete Controls -->
@@ -38,10 +38,10 @@
 
     <!-- Total -->
     <div class="total-price">
-      Total Amount : {{ order.totalAmount | currency }}
+      Total Amount : {{ order.totalAmount  | currency:'INR':'symbol-narrow'  }}
     </div>
     <div class="total-price">
-      Amount : {{ order.amount | currency }}
+      Amount : {{ order.amount  | currency:'INR':'symbol-narrow' }}
     </div>
     <div class="total-price" *ngIf="order.couponName">
       Coupon Applied : {{ order.couponName }}

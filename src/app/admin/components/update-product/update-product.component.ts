@@ -91,6 +91,7 @@ export class UpdateProductComponent {
 
       this.adminService.updateProduct(this.productId,formData).subscribe((res)=>{
         if(res.id != null ) {
+          console.log(res);
           this.snackbar.open('Product Updated Successfully!', 'Close', { duration : 5000});
           this.router.navigateByUrl('admin/dashboard');
         }else{
