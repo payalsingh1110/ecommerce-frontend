@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { UserStorageService } from '../storage/user-storage.service';
 const BASIC_URL = "http://localhost:8080/";
+const AUTH_HEADER = 'authorization';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,12 @@ login(username: string, password: string): Observable<boolean> {
   );
 }
 
+//        <!-- tracking order code-->
+
+
+  getOrderByTrackingId(trackingId: string): Observable<any> {
+    return this.http.get(BASIC_URL +`order/${trackingId}`);
+  }
 
 
 }
