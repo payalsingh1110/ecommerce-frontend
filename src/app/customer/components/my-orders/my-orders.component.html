@@ -7,7 +7,7 @@
 
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef style="font-weight:bolder; color: #003973;">Amount</mat-header-cell>
-            <mat-cell *matCellDef="let myOrders">{{ myOrders.amount}}</mat-cell>
+            <mat-cell *matCellDef="let myOrders">{{ myOrders.amount  | currency:'INR':'symbol-narrow' }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">

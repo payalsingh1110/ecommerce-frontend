@@ -29,11 +29,11 @@
             <mat-card-title>Earnings</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="metric-value">{{ data.currentMonthEarnings | currency : 'USD': 'symbol'}}</div>
+            <div class="metric-value">{{ data.currentMonthEarnings  | currency:'INR':'symbol-narrow'}}</div>
             <div class="metric-subtext">Current Month</div>
         </mat-card-content>
          <mat-card-content class="previous-month">
-            <div class="metric-value">{{ data.previousMonthOrders | currency : 'USD': 'symbol'}}</div>
+            <div class="metric-value">{{ data.previousMonthOrders  | currency:'INR':'symbol-narrow'}}</div>
             <div class="metric-subtext">Previous Month</div>
         </mat-card-content>
         
