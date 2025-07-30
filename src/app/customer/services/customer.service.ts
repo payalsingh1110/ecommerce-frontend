@@ -67,9 +67,7 @@ removeFromCart(productId: any): Observable<any> {
   });
 }
 
-
-
-    
+   
     getCartByUserId() : Observable<any>{
       console.log("UserId:", UserStorageService.getUserId());
 
@@ -119,11 +117,29 @@ removeFromCart(productId: any): Observable<any> {
         });
      }
 
+    addProductToWishlist(wishlistDto:any) : Observable<any>{              
+      return this.http.post(BASIC_URL + `api/customer/wishlist`, wishlistDto, {
+          headers : this.createAuthorizationHeader(),
+        })
+     }
+
+   
+
+    getWishlistByUserId() : Observable<any>{ 
+      const userId = UserStorageService.getUserId();   
+      console.log("user Id:", userId);   
+      
+       return this.http.get(BASIC_URL + `api/customer/wishlist/${userId}`,  {
+          headers : this.createAuthorizationHeader(),
+        })
+    }
+
 
     private createAuthorizationHeader(): HttpHeaders{
      const token = UserStorageService.getToken();  
-    //  console.log("Sending token:", token);                                  good for debug
-    return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer
-   
-  }
+     console.log("Sending token:", token);                              //    good for debug
+     return new HttpHeaders().set('Authorization', 'Bearer ' + token );     //  space added here after bearer
+    }
+
+    
 }
